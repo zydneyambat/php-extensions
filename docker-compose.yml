@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+    php:
+        build: .
+        image: zambat/php:7.2
+        volumes:
+            - "${SOURCE_PATH}:${PHP_SRC_ROOT}"
+            - "./ext/helloworld:${PHP_SRC_ROOT}/ext/helloworld"
+        working_dir: "${PHP_SRC_ROOT}"
+        user: "$USER_ID"
+        stdin_open: true
+        tty: true
+        command: bash
